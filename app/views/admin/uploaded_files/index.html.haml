@@ -1,0 +1,25 @@
+%h1= t('listing_uploaded_files')
+
+%table.index
+  %thead
+    %tr
+      %th= t('filename')
+      %th= t('url')
+      %th= t('uploaded_by')
+      %th= t('date_uploaded')
+      %th= t('uploaded_file_actions')
+  %tbody
+    - @uploaded_files.each do |uploaded_file|
+      %tr
+        %td= uploaded_file.filename
+        %td= link_to root_url + uploaded_file.public_filename.sub('/',''), root_url + uploaded_file.public_filename.sub('/','')
+        %td #{uploaded_file.user.first_name} #{uploaded_file.user.last_name} (#{uploaded_file.user.email})
+        %td= uploaded_file.created_at.to_s(:long_ordinal)
+        %td
+          %span= link_to('Download', download_admin_uploaded_file_path(uploaded_file))
+          %span= link_to('Delete', [:admin, uploaded_file], :confirm => 'Are you sure?', :method => :delete) 
+  %tfoot
+    
+= will_paginate @uploaded_files
+
+=button_link_to t('upload_a_new_file'), new_admin_uploaded_file_path, :icon => 'add'

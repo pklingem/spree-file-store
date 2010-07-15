@@ -1,0 +1,14 @@
+---
+en-US:
+  file_store: File Store
+  listing_uploaded_files: Listing Uploaded Files
+  upload_a_new_file: Upload a New File
+  filename: Filename
+  url: URL
+  uploaded_by: Uploaded By
+  date_uploaded: Date Uploaded
+  upload_file: Upload File
+  uploaded_file_actions: Actions
+  file_successfully_uploaded: File was successfully uploaded
+  file_successfully_deleted: File was successfully deleted
+  file_could_not_be_deleted: File could not be deleted
