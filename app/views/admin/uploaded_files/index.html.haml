@@ -13,10 +13,11 @@
       %tr
         %td= uploaded_file.filename
         %td= link_to root_url + uploaded_file.public_filename.sub('/',''), root_url + uploaded_file.public_filename.sub('/','')
-        %td #{uploaded_file.user.first_name} #{uploaded_file.user.last_name} (#{uploaded_file.user.email})
+        %td (#{uploaded_file.user.email})
         %td= uploaded_file.created_at.to_s(:long_ordinal)
         %td
           %span= link_to('Download', download_admin_uploaded_file_path(uploaded_file))
+          %span= "|"
           %span= link_to('Delete', [:admin, uploaded_file], :confirm => 'Are you sure?', :method => :delete) 
   %tfoot
     
