@@ -8,11 +8,11 @@ Installation
 
 From the beginning:
 
- # Make your spree website
- # cd vendor/extensions
- # git clone <github link>
- # cd ../..
- # rake db:migrate
+1. Make your spree website
+1. cd vendor/extensions
+1. git clone <github link>
+1. cd ../..
+1. rake db:migrate
 
 And then you are ready to go. 
 
