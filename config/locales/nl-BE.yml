@@ -1,0 +1,14 @@
+---
+nl-BE:
+  date_uploaded: Geüpload op
+  file_could_not_be_deleted: Het bestand kon niet verwijderd worden
+  file_successfully_deleted: Het bestand is verwijderd
+  file_successfully_uploaded: Het bestand is succesvol geüpload
+  filename: Bestandsnaam
+  listing_uploaded_files: Lijst van geüploade bestanden
+  upload_a_new_file: Een nieuw bestand uploaden
+  upload_file: Uploaden
+  uploaded_by: Geüpload door
+  uploaded_file_actions: Acties
+  uploaded_files: Geüploade bestanden
+  url: URL
