@@ -9,7 +9,11 @@ Installation
 From the beginning:
 
 1. Make your spree website
-1. git clone <github link> vendor/extensions/file_store
+1.
+For 0.9.x:
+        git clone git://github.com/pklingem/spree-file-store.git -b 0.9.x vendor/extensions/file_store
+For 0.10.x:
+        git clone git://github.com/pklingem/spree-file-store.git -b 0.10.x vendor/extensions/file_store
 1. rake db:migrate
 
 And you are ready to go!
