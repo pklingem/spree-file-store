@@ -35,39 +35,43 @@ Troubleshooting
 ---------------
 
 If you are getting a 'Template is missing' error (Missing template admin/uploaded_files/index.erb in view path), then you are probably missing the haml gem. Two options:
-- Require the HAML gem in your environment.rb
-- Use the [`erb` branch][2] that you can find in Robert Massaioli's fork
+
+* Require the HAML gem in your environment.rb, or:
+* Use the ['erb' branch][2] that you can find in Robert Massaioli's fork
 
 Example capistrano setup
 ------------------------
 
 If you deploy using Capistrano, and don't like 404's, it is important that the 'public/uploaded\_files' directory is a) excluded from your Version Control System and b) symlinked to an 'uploaded\_files' in a shared dir. You will have to take care of the first thing yourself, and here is a capistrano snippet to set you up for the latter:
 
-namespace :uploads do
-  desc "Create shared uploads dir"
-  task :create\_shared\_uploads do
-      run "mkdir -p #{shared\_path}/public/uploaded\_files"
+<pre><code>
+  namespace :uploads do
+    desc "Create shared uploads dir"
+    task :create\_shared\_uploads do
+        run "mkdir -p #{shared\_path}/public/uploaded\_files"
+    end
+
+    desc "Link public/uploaded_files to shared/public/uploaded_files"
+    task :link_uploads do
+        run "ln -nfs #{shared_path}/public/uploaded_files #{release_path}/public/uploaded_files"
+    end
   end
 
-  desc "Link public/uploaded_files to shared/public/uploaded_files"
-  task :link_uploads do
-      run "ln -nfs #{shared_path}/public/uploaded_files #{release_path}/public/uploaded_files"
+  after "deploy:setup" do
+      uploads::create\_shared\_uploads
   end
-end
-
-after "deploy:setup" do
-    uploads::create\_shared\_uploads
-end
-after "deploy:update_code" do
-    uploads::link_uploads
-end
+  
+  after "deploy:update_code" do
+      uploads::link_uploads
+  end
+</code></pre>
 
 Contributors
 ------------
 
-[Patrick Klingemann][3]
-[Robert Massaioli][4]
-[Benny Degezelle][5]
+* [Patrick Klingemann][3]
+* [Robert Massaioli][4]
+* [Benny Degezelle][5]
 
 [1]: http://spreecommerce.com/ "Spree: Open Source E-Commerce for Ruby on Rails"
 [2]: http://github.com/robertmassaioli/spree-file-store/tree/erb "Git branch of this extension that does not require HAML"
